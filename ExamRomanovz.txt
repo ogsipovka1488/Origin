@@ -1,0 +1,31 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+double calculateTetrahedronVolume(double side) {
+    if (side <= 0) {
+        throw invalid_argument("The side length should be a positive number.");
+    }
+    
+    double volume = pow(side, 3) / (6 * sqrt(2));
+    return volume;
+}
+
+int main() {
+    try {
+        for (int i = 1; i <= 10; i++) {
+            double side;
+            cout << "Enter the length of side " << i << ": ";
+            cin >> side;
+            
+            double volume = calculateTetrahedronVolume(side);
+            cout << "The volume of the tetrahedron is: " << volume << endl;
+        }
+    } 
+    catch (const invalid_argument& e) {
+        cout << "Invalid input. " << e.what() << endl;
+    }
+    
+    return 0;
+}
